@@ -1,13 +1,12 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
+import { CACHE_AFTER_UPVOTES } from "@/config";
 import { PostVoteValidator } from "@/lib/validators/vote";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { CachedPost } from "@/types/redis";
 import { redis } from "@/lib/redis";
-
-export const CACHE_AFTER_UPVOTES = 1;
 
 export async function PATCH(req: Request) {
   try {
